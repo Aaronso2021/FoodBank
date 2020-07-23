@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  var getAllRecords = function() {
+    $.getJSON(
+      "https://api.airtable.com/v0/app4QLOjpz9aHEhkl/Food%20Banks?api_key=keyzwuEdoa6bHhQSL",
+      function(airtable) {
+        var html = [];
+        $.each(airtable.records, function(index, record) {
+          var id = record.id;
+          var Name = record.fields["Name"];
+          var Hours = record.fields["Hours"];
+          var Address = record.fields["Address"];
+          
+          html.push(listView(id, Name, Hours, Address));
+        });
+        $(".list-view").append(html);
+      }
+    );
+  };
+  
+</html>
