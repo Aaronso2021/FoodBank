@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  var getAllRecords = function() {
-    $.getJSON(
-      "https://api.airtable.com/v0/app4QLOjpz9aHEhkl/Food%20Banks?api_key=keyzwuEdoa6bHhQSL",
-      function(airtable) {
-        var html = [];
-        $.each(airtable.records, function(index, record) {
-          var id = record.id;
-          var Name = record.fields["Name"];
-          var Hours = record.fields["Hours"];
-          var Address = record.fields["Address"];
-          
-          html.push(listView(id, Name, Hours, Address));
-        });
-        $(".list-view").append(html);
-      }
-    );
-  };
-  
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Food Banks</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="main.css"/>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="main.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      </head>
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
 </html>
