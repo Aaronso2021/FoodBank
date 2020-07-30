@@ -25,6 +25,28 @@ function getParameterByName(name, url) {
     );
   };
 
+  var getOneRecord = function(id) {
+    $.getJSON(
+      `https://api.airtable.com/v0/app4QLOjpz9aHEhkl/Food%20Banks/${id}?api_key=keyzwuEdoa6bHhQSL`,
+      function(record) {
+        var html = [];
+        var name = record.fields["name"];
+        var hours = record.fields["hours"];
+        var address = record.fields["address"];
+      
+        html.push(
+          detailView(
+            name,
+            hours,
+            address,
+            formattedString
+          )
+        );
+        $(".detail-view").append(html);
+      }
+    );
+  };
+  
   var listView = function(id, name, hours, address) {
     return `
     <p>${name}
