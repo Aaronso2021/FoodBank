@@ -15,10 +15,11 @@ function getParameterByName(name, url) {
         var html = [];
         $.each(airtable.records, function(index, record) {
           var id = record.id;
-          var name = record.fields["name"];
-          var hours = record.fields["hours"];
-          var address = record.fields["address"];
-          html.push(listView(id, name, hours, address));
+          var name = record.fields["Name"];
+          var hours = record.fields["Hours"];
+          var address = record.fields["Address"];
+          var website = record.fields["Website"];
+          html.push(listView(id, name, hours, address, website));
         });
         $(".list-view").append(html);
       }
@@ -30,15 +31,17 @@ function getParameterByName(name, url) {
       `https://api.airtable.com/v0/app4QLOjpz9aHEhkl/Food%20Banks/${id}?api_key=keyzwuEdoa6bHhQSL`,
       function(record) {
         var html = [];
-        var name = record.fields["name"];
-        var hours = record.fields["hours"];
-        var address = record.fields["address"];
+        var name = record.fields["Name"];
+        var hours = record.fields["Hours"];
+        var address = record.fields["Address"];
+        var website = record.fields["Website"];
       
         html.push(
           detailView(
             name,
             hours,
             address,
+            website,
             formattedString
           )
         );
@@ -47,9 +50,19 @@ function getParameterByName(name, url) {
     );
   };
   
-  var listView = function(id, name, hours, address) {
+  var listView = function(id, name, hours, address, website) {
     return `
-    <p>${name}
+    <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">${name}</h5>
+      <p class="card-text">${hours}</p>
+      <p class="card-text">${address}</p>
+      <p class="card-text">${website}</p>
+      <a href="#" class="btn btn-primary">${website}</a>
+    </div>
+  </div>
+
     `;
   };
   
