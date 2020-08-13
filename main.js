@@ -19,7 +19,8 @@ function getParameterByName(name, url) {
           var hours = record.fields["Hours"];
           var address = record.fields["Address"];
           var website = record.fields["Website"];
-          html.push(listView(id, name, hours, address, website));
+          var donations = record.fields["Donations"];
+          html.push(listView(id, name, hours, address, website, donations));
         });
         $(".list-view").append(html);
       }
@@ -35,6 +36,7 @@ function getParameterByName(name, url) {
         var hours = record.fields["Hours"];
         var address = record.fields["Address"];
         var website = record.fields["Website"];
+        var donations = record.fields["Donations"];
       
         html.push(
           detailView(
@@ -42,6 +44,7 @@ function getParameterByName(name, url) {
             hours,
             address,
             website,
+            donations,
             formattedString
           )
         );
@@ -50,7 +53,7 @@ function getParameterByName(name, url) {
     );
   };
   
-  var listView = function(id, name, hours, address, website) {
+  var listView = function(id, name, hours, address, website, donations) {
     return `
     <div class="card" style="width: 18rem;">
     <img src="..." class="card-img-top" alt="...">
@@ -59,15 +62,17 @@ function getParameterByName(name, url) {
       <p class="card-text">${hours}</p>
       <p class="card-text">${address}</p>
       <p class="card-text">${website}</p>
-      <a href="#" class="btn btn-primary">${website}</a>
+      <p class="card-text">${donations}</p>
+      <a href="#" class="btn btn-primary">Learn More</a>
     </div>
   </div>
 
     `;
   };
-  
 
-  var id = getParameterByName("id");
+  
+ 
+var id = getParameterByName("id");
 if (id) {
   getOneRecord(id);
 } else {
